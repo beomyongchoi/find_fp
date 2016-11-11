@@ -1,0 +1,5 @@
+[run]
+include = find_fp/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin

@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% load static %} {% block title %}Where Are You?{% endblock %} {% block content %}
+<div class="container">
+  <div class="row">
+    <!-- LOADER -->
+    <div class="col-sm-12 loader">
+      <p>
+        loader
+      </p>
+    </div>
+    <!-- LOCATION FORM -->
+    <div class="col-sm-12 locator">
+      <form method="POST" class="post-form centered-text padding-top locator" action="{% url 'whatshouldieat:hereiam' %}">{% csrf_token %}
+        <div class="locator__message">can't find your fucking location. try again</div>
+        <h2><label for="id_location" >Where Are You?</label></h2>
+        <p><input id="id_location" type="text" class="form-control form-control-lg sharp here-i-am centered-box" name="location" maxlength="30" required/></p>
+        <button type="submit" class="save btn btn-default sharp">Here i am</button>
+        <!-- <input class="locator__search" placeholder="WHERE THE FUCK ARE YOU?" type="text" id="locationsearch">
+                <input type="submit" class="locator__submit" value="find me a place to fucking eat"> -->
+      </form>
+    </div>
+    <!-- RECOMMENDATION -->
+    <div class="col-sm-12 recommendation">
+      <div class="recommendation__destination"> </div>
+      <div class="map">
+        <div class="map__address"></div>
+        <div class="map__canvas" id="googlemap"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initMap() {
+    autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('id_location')), {
+        types: ['geocode']
+      });
+
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+      } else {
+        window.alert(place.geometry.location.lat());
+        return;
+      }
+
+      //   infowindow.setContent('<div><strong>' + place.geometry.location.lat() + '</strong><br>' + address);
+      //   infowindow.open(map, marker);
+    });
+  }
+
+  initMap();
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkg_HyXl_opyrtIjvnDIzL-jlV8KQLHVw&libraries=places&callback=initMap" async defer></script>
+{% endblock content %}

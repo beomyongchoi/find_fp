@@ -1,0 +1,130 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+// project specific CSS goes here
+////////////////////////////////
+//Variables//
+////////////////////////////////
+// Alert colors
+$white: #fff;
+$mint-green: #d6e9c6;
+$black: #000;
+$pink: #f2dede;
+$dark-pink: #eed3d7;
+$red: #b94a48; ////////////////////////////////
+//Alerts//
+////////////////////////////////
+// bootstrap alert CSS, translated to the django-standard levels of
+// debug, info, success, warning, error
+
+.alert-debug {
+  background-color: $white;
+  border-color: $mint-green;
+  color: $black;
+}
+
+.alert-error {
+  background-color: $pink;
+  border-color: $dark-pink;
+  color: $red;
+}
+////////////////////////////////
+//Navbar//
+////////////////////////////////
+// This is a fix for the bootstrap4 alpha release
+
+.navbar {
+  border-radius: 0;
+}
+@media (max-width: 47.9em) {
+  .navbar-nav .nav-item {
+    display: inline-block;
+    float: none;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+  .nav.navbar-nav.pull-xs-right {
+    float: none !important;
+  }
+
+}
+////////////////////////////////
+//Django Toolbar//
+////////////////////////////////
+// Display django-debug-toolbar.
+// See https://github.com/django-debug-toolbar/django-debug-toolbar/issues/742
+// and https://github.com/pydanny/cookiecutter-django/issues/317
+
+[hidden][style="display:block;"] {
+  display: block !important;
+}
+
+body {
+  font-family: 'Spoqa Han Sans', 'Sans-serif';
+  font-weight: 100;
+}
+
+.here-i-am {
+  font-size: 1rem;
+  width: 30rem;
+}
+
+.pac-container {
+  border: 0rem;
+  border-top: 0rem;
+}
+
+.pac-container .pac-item {
+  color: #cccccc;
+  line-height: 1;
+  padding: 0.65rem 1rem 0.25rem;
+  -webkit-transition: all linear 0.3s;
+  -moz-transition: all linear 0.3s;
+  -ms-transition: all linear 0.3s;
+  -o-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+
+.pac-container .pac-item span {
+  font-size: 1rem;
+}
+@media only screen and (min-width: 30em) {
+  .pac-container .pac-item span {
+    font-size: 1rem;
+  }
+}
+
+.pac-container .pac-item.pac-item-selected,
+.pac-container .pac-item:hover {
+  background: #00aba6;
+  color: #ffffff;
+}
+
+.pac-container .pac-icon {
+  display: none;
+}
+
+.sharp {
+  border-radius: 0;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.centered-box {
+    display: block;
+    margin: 1rem auto;
+}
+
+.padding-top {
+    padding-top: 3rem;
+}
+
+@media (max-width: 47.9em) {
+    .here-i-am {
+      width: 100%;
+    }
+}
