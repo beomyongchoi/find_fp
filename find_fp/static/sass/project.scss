@@ -45,7 +45,7 @@ $red: #b94a48; ////////////////////////////////
     margin-left: 0;
   }
 
-  .nav.navbar-nav.pull-xs-right {
+  .nav.navbar-nav.float-xs-right {
     float: none !important;
   }
 
@@ -61,10 +61,10 @@ $red: #b94a48; ////////////////////////////////
   display: block !important;
 }
 
-body {
-  font-family: 'Spoqa Han Sans', 'Sans-serif';
-  font-weight: 100;
-}
+// body {
+//   font-family: 'Spoqa Han Sans', 'Sans-serif';
+//   font-weight: 100;
+// }
 
 .here-i-am {
   font-size: 1rem;

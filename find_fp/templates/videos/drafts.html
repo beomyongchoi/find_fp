@@ -1,14 +1,9 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
-{% load i18n %}
-
-{% block head %}
-  <script src="{% static 'js/articles.js' %}"></script>
-{% endblock head %}
+{% load static %}
 
 {% block main %}
   <ol class="breadcrumb">
-    <li><a href="{% url 'articles' %}">{% trans 'Articles' %}</a></li>
+    <li><a href="{% url 'videos' %}">{% trans 'Articles' %}</a></li>
     <li class="active">{% trans 'Drafts' %}</li>
   </ol>
   <table class="table table-striped">
@@ -20,12 +15,12 @@
       </tr>
     </thead>
     <tbody>
-      {% for article in drafts %}
+      {% for video in drafts %}
         <tr>
-          <td><a href="{% url 'edit_article' article.pk %}">{{ article.title }}</a></td>
-          <td>{{ article.get_summary_as_markdown|safe }}</td>
+          <td><a href="{% url 'edit_video' video.pk %}">{{ video.title }}</a></td>
+          <td>{{ video.get_summary_as_markdown|safe }}</td>
           <td>
-            {% for tag in article.get_tags %}
+            {% for tag in video.get_tags %}
               <span class="label label-default">{{ tag }}</span>
             {% endfor %}
           </td>

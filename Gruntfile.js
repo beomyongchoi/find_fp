@@ -64,7 +64,9 @@ module.exports = function (grunt) {
               precision: 10
           },
           files: {
-              '<%= paths.css %>/project.css': '<%= paths.sass %>/project.scss'
+              '<%= paths.css %>/project.css': '<%= paths.sass %>/project.scss',
+              '<%= paths.css %>/videos/grid.css': '<%= paths.sass %>/videos/grid.scss',
+              '<%= paths.css %>/videos/comment.css': '<%= paths.sass %>/videos/comment.scss'
           },
       },
       dist: {
@@ -74,7 +76,9 @@ module.exports = function (grunt) {
               precision: 10
           },
           files: {
-              '<%= paths.css %>/project.css': '<%= paths.sass %>/project.scss'
+              '<%= paths.css %>/project.css': '<%= paths.sass %>/project.scss',
+              '<%= paths.css %>/videos/grid.css': '<%= paths.sass %>/videos/grid.scss',
+              '<%= paths.css %>/videos/comment.css': '<%= paths.sass %>/videos/comment.scss'
           },
       }
     },
@@ -112,12 +116,12 @@ module.exports = function (grunt) {
       runDjango: {
         cmd: 'python <%= paths.manageScript %> runserver'
       },
-      
+
     }
   });
 
   grunt.registerTask('serve', [
-    
+
     'bgShell:runDjango',
     'watch'
   ]);

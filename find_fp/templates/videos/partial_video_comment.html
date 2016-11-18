@@ -1,0 +1,11 @@
+{% load humanize %}
+
+<div class="comment">
+  <div class="comment-text">
+    <h5>
+      <a href="{% url 'users:detail' comment.user.username %}">{{ comment.user.username }}</a>
+      <small>{{ comment.date|naturaltime }}</small>
+    </h5>
+    <p>{{ comment.comment }}</p>
+  </div>
+</div>

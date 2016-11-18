@@ -1,0 +1,36 @@
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto; }
+
+.title {
+  padding-top: 1rem; }
+
+.tags {
+  margin: 3rem auto;
+  text-align: center; }
+
+.grid {
+  /* center */
+  margin: 0 auto; }
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.grid-item {
+  margin: 0 !important;
+  padding: 24px 12px !important;
+  width: 260px !important;
+  height: auto;
+  float: left; }
+
+.summary {
+  width: 236px; }
+
+.wrapper {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+  margin: -10px;
+  padding: 10px; }

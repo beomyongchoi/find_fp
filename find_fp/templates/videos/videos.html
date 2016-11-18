@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Videos {% endblock %} {% block head %}
+<link href="{% static 'css/videos/grid.css' %}" rel="stylesheet"> {% endblock %} {% block content %}
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="search-box">
+      <form class="form-inline">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="tags">
+      <h4>Popular Tags</h4> {% for tag, count in popular_tags %}
+      <a href="#"><span class="tag tag-pill tag-default">{{ tag }} {{ count }}</span></a> {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="grid">
+    {% for video in videos %}
+    <article class="grid-item">
+      <div class="summary">
+        
+        <a class="block" href="{% url 'videos:video' video.slug %}">
+        {% if video.youtube_url %}
+          <img src="http://img.youtube.com/vi/{{video.youtube_url}}/0.jpg"/>
+        {% endif %}
+        <h4 class="title">{{ video.title }}</h4>
+        <div class="info">
+          <span class="date">
+            <i class="fa fa-calendar" aria-hidden="true"></i> {{ video.create_date }}
+          </span>
+          <span class="user">
+            {{ video.create_user }}
+          </span>
+          <span class="comments">
+            <i class="fa fa-comments" aria-hidden="true"></i> {{ video.get_comments.count }} Comments
+          </span>
+        </div>
+        </a> {% if video.get_tags %}
+        <div class="tags">
+          {% for tag in video.get_tags %}
+          <a href="#"><span class="tag tag-pill tag-default">{{ tag }}</span></a> {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% empty %}
+    <h4 class="no-data">There is no published video yet. <a href="{% url 'write' %}">Be the first one to publish!</a></h4> {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {% include 'paginator.html' with paginator=videos %}
+  </div>
+</div>
+<ul class="fa-ul">
+  <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+  <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+  <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+  <li><i class="fa-li fa fa-square"></i>in lists</li>
+</ul>
+{% endblock content %} {% block javascript %}
+<script src="{% static 'js/videos/grid.js' %}"></script>
+<script src="https://unpkg.com/masonry-layout@4.1.1/dist/masonry.pkgd.min.js"></script>
+<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+{% endblock %}

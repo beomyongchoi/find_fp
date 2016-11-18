@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 
-# Register your models here.
+from .models import Video, Tag, VideoComment
+
+models = (Video, Tag, VideoComment)
+for model in models:
+    admin.site.register(model)

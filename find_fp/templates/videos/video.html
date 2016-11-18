@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {% block title %}{{ video.title }}{% endblock %} {% block head %}
+<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+<link href="{% static 'css/videos/comment.css' %}" rel="stylesheet">
+<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+
+<!-- If you'd like to support IE8 -->
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+</script>
+{% endblock %} {% block content %}
+<div class="row">
+  <div class="info">
+    <span class="date">
+      <span class="glyphicon glyphicon-calendar"></span>
+      {{ video.create_date }}
+    </span>
+    <span class="user">
+      {{ video.create_user.username }}
+    </span>
+    <span class="comments">
+      <span class="glyphicon glyphicon-comment"></span>
+      {{ video.get_comments.count }} Comments
+    </span>
+  </div>
+  <div class="col-sm-12">
+    <div class="embed-responsive embed-responsive-16by9">
+      {% if video.video_file %}
+        <video id="video" controls preload="auto">
+          <source src="{{ MEDIA_URL }}{{ video.video_file }}" type='video/mp4'>
+        </video>
+
+        {% elif video.youtube_url %}
+          <iframe src="https://www.youtube.com/embed/{{video.youtube_url}}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          <p>
+            cannot find any videos :(
+          </p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <p class="video-desc">{{ video.description|linebreaksbr }}</p>
+      {% if video.get_tags %}
+        <div class="tags">
+          {% for tag in video.get_tags %}
+            <a href="#"><span class="tag tag-pill tag-default">{{ tag }}</span></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% include 'videos/partial_video_comments.html' with video=video %}
+      <a class="btn btn-outline-primary" href="{% url 'videos:video' video.get_prev.slug %}" role="button"><span class="glyphicon glyphicon-pencil">prev :{{ video.get_prev.title }}</span></a>
+      <a class="btn btn-outline-primary" href="{% url 'videos:video' video.get_next.slug %}" role="button"><span class="glyphicon glyphicon-pencil">next :{{ video.get_next.title }}</span></a>
+      <a class="btn btn-outline-primary" href="{% url 'videos:videos' %}" role="button"><span class="glyphicon glyphicon-pencil">list</span></a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'js/videos/comment.js' %}"></script>
+<script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+{% endblock %}

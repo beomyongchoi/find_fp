@@ -21,7 +21,7 @@ urlpatterns = [
 
     # Your stuff: custom urls includes go here
     url(r'^whatshouldieat/', include('find_fp.whatshouldieat.urls', namespace='whatshouldieat')),
-    url(r'^video/', include('find_fp.video.urls', namespace='video')),
+    url(r'^videos/', include('find_fp.videos.urls', namespace='videos')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

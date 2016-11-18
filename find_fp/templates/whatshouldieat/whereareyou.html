@@ -1,30 +1,29 @@
 {% extends "base.html" %} {% load static %} {% block title %}Where Are You?{% endblock %} {% block content %}
-<div class="container">
-  <div class="row">
-    <!-- LOADER -->
-    <div class="col-sm-12 loader">
-      <p>
-        loader
-      </p>
-    </div>
-    <!-- LOCATION FORM -->
-    <div class="col-sm-12 locator">
-      <form method="POST" class="post-form centered-text padding-top locator" action="{% url 'whatshouldieat:hereiam' %}">{% csrf_token %}
-        <div class="locator__message">can't find your fucking location. try again</div>
-        <h2><label for="id_location" >Where Are You?</label></h2>
-        <p><input id="id_location" type="text" class="form-control form-control-lg sharp here-i-am centered-box" name="location" maxlength="30" required/></p>
-        <button type="submit" class="save btn btn-default sharp">Here i am</button>
-        <!-- <input class="locator__search" placeholder="WHERE THE FUCK ARE YOU?" type="text" id="locationsearch">
+
+<div class="row">
+  <!-- LOADER -->
+  <div class="col-sm-12 loader">
+    <p>
+      loader
+    </p>
+  </div>
+  <!-- LOCATION FORM -->
+  <div class="col-sm-12 locator">
+    <form method="POST" class="post-form centered-text padding-top locator" action="{% url 'whatshouldieat:hereiam' %}">{% csrf_token %}
+      <div class="locator__message">can't find your fucking location. try again</div>
+      <h2><label for="id_location" >Where Are You?</label></h2>
+      <p><input id="id_location" type="text" class="form-control form-control-lg sharp here-i-am centered-box" name="location" maxlength="30" required/></p>
+      <button type="submit" class="save btn btn-default sharp">Here i am</button>
+      <!-- <input class="locator__search" placeholder="WHERE THE FUCK ARE YOU?" type="text" id="locationsearch">
                 <input type="submit" class="locator__submit" value="find me a place to fucking eat"> -->
-      </form>
-    </div>
-    <!-- RECOMMENDATION -->
-    <div class="col-sm-12 recommendation">
-      <div class="recommendation__destination"> </div>
-      <div class="map">
-        <div class="map__address"></div>
-        <div class="map__canvas" id="googlemap"></div>
-      </div>
+    </form>
+  </div>
+  <!-- RECOMMENDATION -->
+  <div class="col-sm-12 recommendation">
+    <div class="recommendation__destination"> </div>
+    <div class="map">
+      <div class="map__address"></div>
+      <div class="map__canvas" id="googlemap"></div>
     </div>
   </div>
 </div>

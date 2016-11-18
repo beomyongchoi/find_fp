@@ -19,15 +19,11 @@
     width: 100%; }
   .navbar-nav .nav-item + .nav-item {
     margin-left: 0; }
-  .nav.navbar-nav.pull-xs-right {
+  .nav.navbar-nav.float-xs-right {
     float: none !important; } }
 
 [hidden][style="display:block;"] {
   display: block !important; }
-
-body {
-  font-family: 'Spoqa Han Sans', 'Sans-serif';
-  font-weight: 100; }
 
 .here-i-am {
   font-size: 1rem;
